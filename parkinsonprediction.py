@@ -69,14 +69,41 @@ if selected == 'Prediction':
 
             st.success(park_diagnosis)
 
-# Information Page
-if selected == 'Information':
-    st.title('Information about Parkinson')
+elif selected == 'Information':
+    st.title('Information about Heart Disease')
+    st.markdown(
+        """
+        <p style='font-size:25px;'>
+        Parkinson's disease is a progressive neurological disorder that primarily affects movement, balance, and coordination. It is caused by the degeneration of dopamine-producing neurons in a region of the brain called the substantia nigra. Early signs include tremors, stiffness, and difficulty with balance or walking, but symptoms can vary widely among individuals. As the disease progresses, it can lead to more severe physical and cognitive impairments. It's important to be aware of the early symptoms and seek medical advice promptly, as early intervention can help manage the condition and improve quality of life.
+        unsafe_allow_html=True
+    )
 
 # About Me Page
-if selected == 'About Me':
+elif selected == 'About Me':
     st.title('About Me')
+    st.markdown(
+        """
+        <p style='font-size:25px;'>
+        Me   Vidhan Prajapati   , A 3rd Year BTech Student pursuing  Computer Science at Karnavati University  <br>
+        This project was made on purpose so that i can understand more about application of Machine Learning in healthcare , and would keep on learning
+        Thanku for Vising
+        </p>
+        """, 
+        unsafe_allow_html=True
+    )
 
 # How to Use Page
-if selected == 'How to Use':
+elif selected == 'How To Use':
     st.title('How to Use')
+    st.markdown(
+        """
+        <p style='font-size:25px;'>
+        This website is made to take in the inputs data of particular reading of a particular machine
+        It would not be directly available to public
+        But if you add the values it can make the prediction
+        <br>This is just the demo of how prediction system would look like
+        The algorithm used in model is Support Vector Machine
+        </p>
+        """, 
+        unsafe_allow_html=True
+    )
