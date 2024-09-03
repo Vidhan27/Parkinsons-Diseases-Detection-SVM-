@@ -54,27 +54,37 @@ if selected == 'Prediction':
         if '' in user_input:
             st.error("Please fill in all the input fields.")
         else:
-            # Convert inputs to floats
-            user_input = [float(x) for x in user_input]
+            try:
+                # Convert inputs to floats
+                user_input = [float(x) for x in user_input]
 
-            # Make prediction
-            park_prediction = parkinsons_model.predict([user_input])
+                # Make prediction
+                park_prediction = parkinsons_model.predict([user_input])
 
-            print(park_prediction)
+                # Display prediction result
+                if park_prediction[0] == 1:
+                    park_diagnosis = "The Person has a chance to have Parkinson's Disease"
+                else:
+                    park_diagnosis = "The Person does not have a chance for Parkinson's Disease"
 
-            if park_prediction[0] == 1:
-                park_diagnosis = "The Person has a chance to have Parkinson's Disease"
-            else:
-                park_diagnosis = "The Person does not have a chance for Parkinson's Disease"
+                st.success(park_diagnosis)
+            except ValueError:
+                st.error("Please enter valid numeric values for all fields.")
 
-            st.success(park_diagnosis)
-
+# Information Page
 elif selected == 'Information':
-    st.title('Information about Heart Disease')
+    st.title('Information about Parkinson\'s Disease')
     st.markdown(
         """
         <p style='font-size:25px;'>
-        Parkinson's disease is a progressive neurological disorder that primarily affects movement, balance, and coordination. It is caused by the degeneration of dopamine-producing neurons in a region of the brain called the substantia nigra. Early signs include tremors, stiffness, and difficulty with balance or walking, but symptoms can vary widely among individuals. As the disease progresses, it can lead to more severe physical and cognitive impairments. It's important to be aware of the early symptoms and seek medical advice promptly, as early intervention can help manage the condition and improve quality of life.
+        Parkinson's disease is a progressive neurological disorder that primarily affects movement, balance, and coordination. 
+        It is caused by the degeneration of dopamine-producing neurons in a region of the brain called the substantia nigra. 
+        Early signs include tremors, stiffness, and difficulty with balance or walking, but symptoms can vary widely among individuals. 
+        As the disease progresses, it can lead to more severe physical and cognitive impairments. 
+        It's important to be aware of the early symptoms and seek medical advice promptly, 
+        as early intervention can help manage the condition and improve quality of life.
+        </p>
+        """, 
         unsafe_allow_html=True
     )
 
@@ -84,26 +94,27 @@ elif selected == 'About Me':
     st.markdown(
         """
         <p style='font-size:25px;'>
-        Me   Vidhan Prajapati   , A 3rd Year BTech Student pursuing  Computer Science at Karnavati University  <br>
-        This project was made on purpose so that i can understand more about application of Machine Learning in healthcare , and would keep on learning
-        Thanku for Vising
+        Me, Vidhan Prajapati, a 3rd Year BTech Student pursuing Computer Science at Karnavati University.<br>
+        This project was made with the purpose of understanding the application of Machine Learning in healthcare, 
+        and I will continue learning.<br>
+        Thank you for visiting.
         </p>
         """, 
         unsafe_allow_html=True
     )
 
 # How to Use Page
-elif selected == 'How To Use':
+elif selected == 'How to Use':
     st.title('How to Use')
     st.markdown(
         """
         <p style='font-size:25px;'>
-        This website is made to take in the inputs data of particular reading of a particular machine
-        It would not be directly available to public
-        But if you add the values it can make the prediction
-        <br>This is just the demo of how prediction system would look like
-        The algorithm used in model is Support Vector Machine
+        This website is made to take in the input data of particular readings from a specific machine.
+        It would not be directly available to the public, but if you add the values, it can make predictions.<br>
+        This is just a demo of how a prediction system would look.<br>
+        The algorithm used in the model is Support Vector Machine.
         </p>
         """, 
         unsafe_allow_html=True
     )
+
